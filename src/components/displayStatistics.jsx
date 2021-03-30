@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../style/displayStatistics.css";
-import { Rating, Statistic, Progress, Segment, Label, Image } from "semantic-ui-react";
+import { Rating, Statistic, Progress, Segment, Label } from "semantic-ui-react";
 
 export default class DisplayStatistics extends React.Component {
   constructor(props) {

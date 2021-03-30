@@ -5,6 +5,7 @@ import "../style/displayReview.css";
 import { Rating, Image, Statistic, Button } from "semantic-ui-react";
 import { TiTick } from "react-icons/ti";
 import token from "../config.js";
+import Form from "./formReview.jsx";
 
 export default class DisplayReview extends React.Component {
   constructor(props) {
@@ -12,7 +13,9 @@ export default class DisplayReview extends React.Component {
     this.state = {
       data: [],
       conter: 0,
+      view: "state",
     };
+    this.changePage = this.changePage.bind(this);
   }
   componentDidMount() {
     if (this.props.data.results) {
@@ -210,20 +213,38 @@ export default class DisplayReview extends React.Component {
       });
   }
 
+  // changing th view
+  changePage() {
+    this.setState({ view: "post" });
+  }
+
+  changeView() {
+    if (this.state.view === "post") {
+      return (
+        <div>
+          <Form renderSort={this.props.renderSort} data={this.state.data} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="container">
+            <div className="numRev">{this.numberReview()}</div>
+            <br />
+            <div>{this.renderReview()}</div>
+            {
+              <div className="btn-container">
+                <Button content="MORE REVIEWS" primary />
+                <Button content="ADD A REVIEW" secondary onClick={this.changePage} />
+              </div>
+            }
+          </div>
+        </div>
+      );
+    }
+  }
   ///////////////////////////////////////////// RENDER \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   render() {
-    return (
-      <div className="container">
-        <div className="numRev">{this.numberReview()}</div>
-        <br />
-        <div>{this.renderReview()}</div>
-        {
-          <div className="btn-container">
-            <Button content="MORE REVIEWS" primary />
-            <Button content="ADD A REVIEW" secondary />
-          </div>
-        }
-      </div>
-    );
+    return <div>{this.changeView()}</div>;
   }
 }

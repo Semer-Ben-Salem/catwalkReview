@@ -1,0 +1,24 @@
+.counter {
+  min-width: 10px;
+  max-width: 10px;
+}
+
+/* for images */
+.images {
+  display: grid;
+  width: 80px;
+}
+
+/* for start rating  */
+.star {
+  margin-top: 10px;
+  display: flex;
+}
+
+/* for the check box do you recommend us ?  */
+.checkbox {
+  margin-top: 10px;
+}
+.checkboxP {
+  margin-bottom: 5px;
+}

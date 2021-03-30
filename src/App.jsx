@@ -4,6 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 
 import token from "./config.js";
 import Review from "./components/displayReview.jsx";
+// import Form from "./components/formReview.jsx";
 // import Statistics from "./components/displayStatistics.jsx";
 
 export default class App extends React.Component {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
       data: [],
       data2: [],
-      sort: "relevant,",
+      sort: "relevant",
     };
     this.renderSort = this.renderSort.bind(this);
   }
@@ -52,9 +53,7 @@ export default class App extends React.Component {
         },
       })
       .then(({ data }) => {
-        this.setState({ data2: data }, () => {
-          // console.log("data in app component", this.state.data);
-        });
+        this.setState({ data2: data }, () => {});
       })
       .catch((error) => {
         console.warn("Not good man :(");
@@ -69,6 +68,7 @@ export default class App extends React.Component {
       <div>
         <Review renderSort={this.renderSort} data={this.state.data} />
         {/* <Statistics data={this.state.data} /> */}
+        {/* <Form /> */}
       </div>
     );
   }
